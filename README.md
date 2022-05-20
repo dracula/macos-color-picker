@@ -6,11 +6,11 @@
 
 ## Install
 
-All instructions can be found at [draculatheme.com/color-picker](https://draculatheme.com/color-picker).
+All instructions can be found at [draculatheme.com/macos-color-picker](https://draculatheme.com/macos-color-picker).
 
 ## Team
 
-This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/color-picker/graphs/contributors).
+This theme is maintained by the following person(s) and a bunch of [awesome contributors](https://github.com/dracula/macos-color-picker/graphs/contributors).
 
 | [![Daniel Bayley](https://github.com/danielbayley.png?size=100)](https://github.com/danielbayley) |
 |:--------------------------------------------------------------------------------------------------|
