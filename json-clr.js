@@ -1,9 +1,9 @@
 #! /usr/bin/osascript -l JavaScript
-ObjC.import('AppKit')
-ObjC.import('Foundation')
+ObjC.import("AppKit")
+ObjC.import("Foundation")
 
-const argf = args => {
-  const input = args ? 'ContentsOfFile' : 'DataEncoding'
+function argf(args) {
+  const input = args ? "ContentsOfFile" : "DataEncoding"
   args ||= [
     $.NSFileHandle.fileHandleWithStandardInput.availableData,
     $.NSUTF8StringEncoding
@@ -11,18 +11,17 @@ const argf = args => {
   return $.NSString.alloc[`initWith${input}`](...[args].flat()).js.trim()
 }
 
-const hex_rgba = hex => {
+function hex_rgba(hex) {
   const convert = pos => parseInt(hex.slice(pos, pos + 2), 16) / 255
 
-  if (hex.charAt(0) === '#') hex = hex.slice(1)
+  if (hex.charAt(0) === "#") hex = hex.slice(1)
 
   switch (hex.length) {
     case 3:
-    case 4:
-      hex = hex.split('').reduce((hex, color) => hex + color + color, '')
+    case 4: hex = hex.split("").reduce((hex, color) => hex + color + color, "")
     case 6:
     case 8:
-      hex += 'FF'
+      hex += "FF"
       return {
         r: convert(0),
         g: convert(2),
@@ -41,11 +40,11 @@ run = ([json_file]) => {
 
   let i = 0
   Object.keys(json).forEach(name => {
-    const {r,g,b,a} = hex_rgba(json[name])
-    const NScolor = $.NSColor.colorWithCalibratedRedGreenBlueAlpha(r,g,b,a)
+    const { r, g, b, a } = hex_rgba(json[name])
+    const NScolor = $.NSColor.colorWithCalibratedRedGreenBlueAlpha(r, g, b, a)
 
     NSColorList.insertColorKeyAtIndex(NScolor, name, i)
     i++
   })
-  NSColorList.writeToFile(`${name}.clr`)
+  NSColorList.writeToFile(json_file)
 }
